@@ -1,349 +1,854 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Manifesto</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<title>My Greatest Chapter Begins Now</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,opsz,wght@0,14..44,300;0,14..44,400;0,14..44,600;1,14..44,300;1,14..44,400;1,14..44,600&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --ink: #0d0d0d;
-    --parchment: #f5f0e8;
-    --cream: #faf7f2;
-    --muted: #7a7060;
-  }
+/* ═══════════════════════════════
+   DARK THEME  (default)
+═══════════════════════════════ */
+[data-theme="dark"]{
+  --bg:         #0b0b0a;
+  --bg2:        #131311;
+  --bg3:        #1b1b18;
+  --bg4:        #242420;
+  --surface:    #0f0f0d;
+  --text:       #ede8dc;
+  --text2:      #c8c0aa;
+  --text3:      rgba(237,232,220,.48);
+  --head:       #ede8dc;
+  --muted:      #6a6358;
+  --em:         #d4956a;
+  --em2:        #f0b888;
+  --gold:       #c4903e;
+  --gold2:      #e0b060;
+  --gold3:      rgba(196,144,62,.13);
+  --rule:       rgba(196,144,62,.16);
+  --rule2:      rgba(196,144,62,.07);
+  --pull-bg:    rgba(196,144,62,.09);
+  --pull-bd:    #c4903e;
+  --pull-txt:   #e0b060;
+  --pull-q:     rgba(196,144,62,.12);
+  --ph-bg:      #131311;
+  --ph-bg2:     #1b1b18;
+  --ph-bd:      rgba(196,144,62,.1);
+  --master-bg:  #1b1b18;
+  --master-bd:  rgba(196,144,62,.25);
+  --master-txt: #ede8dc;
+  --master-acc: #e0b060;
+  --rit-bg:     #131311;
+  --rit-bd:     rgba(196,144,62,.14);
+  --rit-txt:    rgba(237,232,220,.55);
+  --rit-lbl:    #c4903e;
+  --rit-item:   rgba(196,144,62,.28);
+  --int-bd:     rgba(196,144,62,.22);
+  --int-txt:    #e0b060;
+  --int-ph:     rgba(196,144,62,.22);
+  --int-disp:   rgba(196,144,62,.08);
+  --int-disp-bd:#c4903e;
+  --int-btn-bg: transparent;
+  --int-btn-txt:#c4903e;
+  --int-btn-bd: rgba(196,144,62,.35);
+  --tog-bg:     rgba(237,232,220,.06);
+  --tog-txt:    #c4903e;
+  --tog-bd:     rgba(196,144,62,.28);
+  --master-full:#0f0f0d;
+  --master-full-txt:#e0b060;
+  --master-full-sub:rgba(224,176,96,.45);
+  --sq-bd:      #c4903e;
+  --dot-c:      #c4903e;
+  --hero-rad1:  rgba(196,144,62,.07);
+  --hero-rad2:  rgba(196,144,62,.04);
+  --scroll-c:   rgba(196,144,62,.4);
+}
 
-  body {
-    background: var(--ink);
-    color: var(--parchment);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* ═══════════════════════════════
+   LIGHT THEME  — deep plum & warm ivory
+═══════════════════════════════ */
+[data-theme="light"]{
+  --bg:         #faf6f0;
+  --bg2:        #f0e8dc;
+  --bg3:        #fdf9f4;
+  --bg4:        #e8ddd0;
+  --surface:    #fdf9f4;
+  --text:       #1c1410;
+  --text2:      #3a2e24;
+  --text3:      rgba(28,20,16,.54);
+  --head:       #1c1410;
+  --muted:      #7a6e60;
+  --em:         #6b2d5e;
+  --em2:        #8a3878;
+  --gold:       #6b2d5e;
+  --gold2:      #8a3878;
+  --gold3:      rgba(107,45,94,.1);
+  --rule:       rgba(107,45,94,.15);
+  --rule2:      rgba(107,45,94,.06);
+  --pull-bg:    #f0e8dc;
+  --pull-bd:    #6b2d5e;
+  --pull-txt:   #4a1e42;
+  --pull-q:     rgba(107,45,94,.1);
+  --ph-bg:      #fdf9f4;
+  --ph-bg2:     #f0e8dc;
+  --ph-bd:      rgba(107,45,94,.1);
+  --master-bg:  #2a1226;
+  --master-bd:  rgba(107,45,94,.3);
+  --master-txt: #fdf9f4;
+  --master-acc: #d4a0c8;
+  --rit-bg:     #2a1226;
+  --rit-bd:     rgba(107,45,94,.2);
+  --rit-txt:    rgba(253,249,244,.62);
+  --rit-lbl:    #d4a0c8;
+  --rit-item:   rgba(212,160,200,.35);
+  --int-bd:     rgba(107,45,94,.22);
+  --int-txt:    #4a1e42;
+  --int-ph:     rgba(107,45,94,.28);
+  --int-disp:   #f0e8dc;
+  --int-disp-bd:#6b2d5e;
+  --int-btn-bg: #2a1226;
+  --int-btn-txt:#fdf9f4;
+  --int-btn-bd: transparent;
+  --tog-bg:     #2a1226;
+  --tog-txt:    #d4a0c8;
+  --tog-bd:     transparent;
+  --master-full:#2a1226;
+  --master-full-txt:#d4a0c8;
+  --master-full-sub:rgba(212,160,200,.45);
+  --sq-bd:      #6b2d5e;
+  --dot-c:      #6b2d5e;
+  --hero-rad1:  rgba(107,45,94,.55);
+  --hero-rad2:  rgba(42,18,38,.7);
+  --scroll-c:   rgba(212,160,200,.5);
+}
 
-  /* Grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
-  }
+/* ─── BASE ─── */
+html{scroll-behavior:smooth;background:var(--bg);transition:background .55s ease}
+body{
+  color:var(--text);
+  font-family:'Raleway',sans-serif;
+  font-weight:300;line-height:1.8;
+  overflow-x:hidden;
+  transition:color .55s ease,background .55s ease;
+}
 
-  .page {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 80px 40px 120px;
-  }
+/* ─── TOGGLE ─── */
+.toggle{
+  position:fixed;top:22px;right:26px;z-index:9000;
+  display:flex;align-items:center;gap:8px;
+  background:var(--tog-bg);color:var(--tog-txt);
+  border:1px solid var(--tog-bd);
+  padding:9px 18px;
+  font-family:'Raleway',sans-serif;
+  font-size:10px;font-weight:500;letter-spacing:.3em;
+  cursor:pointer;backdrop-filter:blur(10px);
+  transition:all .4s ease;
+}
+.toggle:hover{opacity:.75}
+.tog-icon{font-size:13px;transition:transform .6s ease}
+[data-theme="light"] .tog-icon{transform:rotate(180deg)}
 
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 80px;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 0.2s;
-  }
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:100px 48px 80px;
+  position:relative;overflow:hidden;
+  transition:background .55s ease;
+}
+[data-theme="dark"]  .hero{background:#0b0b0a}
+[data-theme="light"] .hero{background:#2a1226}
 
-  .overline {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
-  }
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  transition:background .55s ease;
+}
+[data-theme="dark"] .hero-glow{
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 40%,var(--hero-rad1) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 35% at 20% 75%,rgba(196,144,62,.04) 0%,transparent 50%),
+    radial-gradient(ellipse 40% 35% at 80% 25%,rgba(196,144,62,.04) 0%,transparent 50%);
+}
+[data-theme="light"] .hero-glow{
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 40%,rgba(107,45,94,.4) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 35% at 80% 80%,rgba(212,160,200,.15) 0%,transparent 50%);
+}
 
-  .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 10vw, 88px);
-    font-weight: 300;
-    line-height: 1.0;
-    color: var(--parchment);
-    margin-bottom: 16px;
-  }
+/* Stars — dark only */
+.stars{position:absolute;inset:0;pointer-events:none;transition:opacity .6s ease}
+[data-theme="dark"]  .stars{opacity:1}
+[data-theme="light"] .stars{opacity:0}
+.star{
+  position:absolute;width:1px;height:1px;
+  background:#e8e0cc;border-radius:50%;
+  opacity:0;animation:twinkle var(--d,4s) ease-in-out infinite var(--dl,0s);
+}
+@keyframes twinkle{0%,100%{opacity:0}50%{opacity:var(--op,.35)}}
 
-  .title em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
+/* Plum particles — light only */
+.petals{position:absolute;inset:0;pointer-events:none;transition:opacity .6s ease}
+[data-theme="dark"]  .petals{opacity:0}
+[data-theme="light"] .petals{opacity:1}
+.petal{
+  position:absolute;
+  width:3px;height:3px;
+  background:rgba(212,160,200,.35);
+  border-radius:50%;
+  opacity:0;animation:drift var(--d,8s) ease-in-out infinite var(--dl,0s);
+}
+@keyframes drift{
+  0%{opacity:0;transform:translateY(0) scale(1)}
+  30%{opacity:.4}
+  70%{opacity:.2}
+  100%{opacity:0;transform:translateY(-80px) scale(.5)}
+}
 
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 28px auto;
-    position: relative;
-  }
+.h-inner{position:relative;z-index:1}
 
-  .divider::before, .divider::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--gold);
-    border-radius: 50%;
-    top: -1.5px;
-  }
-  .divider::before { left: -8px; }
-  .divider::after { right: -8px; }
+.h-over{
+  font-size:10px;font-weight:500;letter-spacing:.6em;
+  color:var(--master-acc);
+  margin-bottom:3rem;
+  opacity:0;animation:up 1s ease forwards .3s;
+  transition:color .55s ease;
+}
 
-  /* Sections */
-  .section {
-    margin-bottom: 64px;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards;
-  }
+.h-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(56px,10.5vw,112px);
+  font-weight:300;line-height:.95;
+  color:#fdf9f4;letter-spacing:-.01em;
+  opacity:0;animation:up 1.2s ease forwards .5s;
+  transition:color .55s ease;
+}
+.h-title em{font-style:italic;color:var(--master-acc);display:block}
 
-  .section:nth-child(1) { animation-delay: 0.6s; }
-  .section:nth-child(2) { animation-delay: 0.9s; }
-  .section:nth-child(3) { animation-delay: 1.1s; }
-  .section:nth-child(4) { animation-delay: 1.3s; }
-  .section:nth-child(5) { animation-delay: 1.5s; }
-  .section:nth-child(6) { animation-delay: 1.7s; }
+.h-bar{
+  width:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--master-acc),transparent);
+  margin:3rem auto;
+  animation:widen 1.3s ease forwards 1s;
+}
 
-  .section-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+.h-tag{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(17px,2.6vw,23px);
+  font-style:italic;font-weight:300;
+  color:rgba(253,249,244,.65);
+  max-width:480px;line-height:1.6;
+  opacity:0;animation:up 1s ease forwards 1.1s;
+}
 
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, rgba(201,168,76,0.4), transparent);
-  }
+.h-sub{
+  font-size:10px;font-weight:300;letter-spacing:.35em;
+  color:rgba(253,249,244,.28);
+  margin-top:2rem;
+  opacity:0;animation:up 1s ease forwards 1.4s;
+}
 
-  .pull-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(24px, 4.5vw, 38px);
-    font-weight: 300;
-    line-height: 1.35;
-    color: var(--parchment);
-    margin-bottom: 20px;
-  }
+.scroll-hint{
+  position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  opacity:0;animation:up 1s ease forwards 1.9s;z-index:1;
+}
+.scroll-hint span{
+  font-size:8px;font-weight:400;letter-spacing:.55em;
+  color:var(--scroll-c);transition:color .55s ease;
+}
+.scroll-needle{
+  width:1px;height:44px;
+  background:linear-gradient(to bottom,var(--master-acc),transparent);
+  animation:breathe 2.5s ease-in-out infinite 2s;
+}
 
-  .pull-quote strong {
-    font-weight: 600;
-    color: var(--gold-light);
-    font-style: italic;
-  }
+/* ─── WRAP ─── */
+.wrap{max-width:780px;margin:0 auto;padding:108px 56px 60px}
 
-  .body-text {
-    font-size: 14px;
-    line-height: 1.9;
-    color: rgba(245,240,232,0.7);
-    font-weight: 300;
-    letter-spacing: 0.01em;
-  }
+/* ─── SECTION ─── */
+.section{
+  margin-bottom:84px;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .9s ease,transform .9s ease;
+}
+.section.vis{opacity:1;transform:translateY(0)}
 
-  /* Highlight box */
-  .highlight-box {
-    border-left: 2px solid var(--gold);
-    padding: 24px 32px;
-    margin: 48px 0;
-    background: rgba(201,168,76,0.05);
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 1.9s;
-  }
+.smeta{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:1.5rem;
+}
+.srom{
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;font-style:italic;
+  color:var(--gold);flex-shrink:0;letter-spacing:.1em;
+  transition:color .55s ease;
+}
+.slbl{
+  font-size:9px;font-weight:500;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--muted);
+}
+.sline{flex:1;height:1px;background:var(--rule);transition:background .55s ease}
 
-  .highlight-box p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 3vw, 24px);
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--gold-light);
-  }
+.sh{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(25px,4vw,38px);
+  font-weight:300;line-height:1.35;
+  color:var(--head);margin-bottom:1.3rem;
+  transition:color .55s ease;
+}
+.sh em{font-style:italic;font-weight:400;color:var(--em)}
 
-  /* Pillars */
-  .pillars {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin: 48px 0;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 2.1s;
-  }
+.sb{
+  font-family:'Spectral',serif;
+  font-size:16px;line-height:2;
+  color:var(--text3);font-weight:300;
+  transition:color .55s ease;
+}
 
-  .pillar {
-    background: rgba(245,240,232,0.03);
-    padding: 28px 24px;
-    border: 1px solid rgba(201,168,76,0.12);
-    transition: background 0.3s ease, border-color 0.3s ease;
-    cursor: default;
-  }
+/* ─── PULL ─── */
+.pull{
+  margin:2.2rem 0;
+  padding:1.4rem 2rem 1.4rem 1.8rem;
+  border-left:2px solid var(--pull-bd);
+  background:var(--pull-bg);
+  position:relative;
+  transition:all .55s ease;
+}
+.pull::before{
+  content:'\201C';
+  font-family:'Cormorant Garamond',serif;
+  font-size:72px;line-height:1;
+  color:var(--pull-q);
+  position:absolute;top:-8px;left:10px;
+  font-style:normal;pointer-events:none;
+}
+.pull p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,2.2vw,20px);
+  font-style:italic;
+  color:var(--pull-txt);line-height:1.65;
+  position:relative;
+  transition:color .55s ease;
+}
 
-  .pillar:hover {
-    background: rgba(201,168,76,0.08);
-    border-color: rgba(201,168,76,0.3);
-  }
+/* ─── DIVIDER ─── */
+.div{display:flex;align-items:center;margin:64px 0}
+.dl{flex:1;height:1px;background:var(--rule);transition:background .55s ease}
+.dorn{padding:0 20px;display:flex;align-items:center;gap:8px}
+.dsq{
+  width:7px;height:7px;
+  border:1px solid var(--sq-bd);
+  transform:rotate(45deg);
+  transition:border-color .55s ease;
+}
+.ddt{
+  width:3px;height:3px;
+  background:var(--dot-c);
+  border-radius:50%;opacity:.65;
+  transition:background .55s ease;
+}
 
-  .pillar-icon {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
+/* ─── CATCHPHRASES ─── */
+.ph-hdr{text-align:center;margin-bottom:2.8rem}
+.ph-hdr h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,4vw,36px);
+  font-style:italic;font-weight:300;
+  color:var(--head);line-height:1.3;margin-bottom:.5rem;
+  transition:color .55s ease;
+}
+.ph-hdr span{
+  font-size:9px;font-weight:400;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--muted);
+}
 
-  .pillar-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
+.phrases{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3px;background:var(--rule2);
+  margin-bottom:84px;
+  transition:background .55s ease;
+}
+.pc{
+  background:var(--ph-bg);
+  padding:28px 24px;
+  border:1px solid var(--ph-bd);
+  transition:background .3s ease;cursor:default;
+}
+.pc:hover{background:var(--ph-bg2)}
+.pc-lbl{
+  font-size:8.5px;font-weight:500;
+  letter-spacing:.45em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;opacity:.8;
+  transition:color .55s ease;
+}
+.pc-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,2vw,19px);
+  font-style:italic;font-weight:300;
+  color:var(--text);line-height:1.55;
+  transition:color .55s ease;
+}
 
-  .pillar-text {
-    font-size: 13px;
-    line-height: 1.7;
-    color: rgba(245,240,232,0.6);
-  }
+/* ─── MASTER PHRASE — full bleed ─── */
+.master-wrap{
+  margin:0 -56px 84px;
+  background:var(--master-full);
+  padding:80px 80px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  transition:background .55s ease;
+}
+.master-wrap::before,.master-wrap::after{
+  content:'';position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--master-acc),transparent);
+  transition:background .55s ease;
+}
+.master-wrap::before{top:0}
+.master-wrap::after{bottom:0}
+.master-eye{
+  font-size:9px;font-weight:500;letter-spacing:.55em;
+  text-transform:uppercase;
+  color:var(--master-full-sub);
+  margin-bottom:2rem;
+  transition:color .55s ease;
+}
+.master-phrase{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,5.5vw,56px);
+  font-weight:300;font-style:italic;
+  color:var(--master-full-txt);
+  line-height:1.25;letter-spacing:.02em;
+  transition:color .55s ease;
+}
+.master-phrase strong{
+  font-weight:400;font-style:normal;
+  display:block;
+  font-size:clamp(13px,1.8vw,16px);
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--master-full-sub);
+  margin-top:1.4rem;
+  font-family:'Raleway',sans-serif;
+}
 
-  /* Closing */
-  .closing {
-    text-align: center;
-    margin-top: 80px;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 2.4s;
-  }
+/* ─── RITUAL ─── */
+.ritual{
+  background:var(--rit-bg);
+  border:1px solid var(--rit-bd);
+  padding:56px 64px;margin-bottom:84px;
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .9s ease,transform .9s ease,background .55s ease,border-color .55s ease;
+}
+.ritual.vis{opacity:1;transform:translateY(0)}
+.ritual::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--rit-lbl),transparent);
+}
+.rit-eye{
+  font-size:9px;font-weight:500;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--rit-lbl);
+  margin-bottom:1.5rem;opacity:.85;
+  transition:color .55s ease;
+}
+.rit-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3.2vw,30px);
+  font-weight:300;font-style:italic;
+  color:#fdf9f4;
+  margin-bottom:2.2rem;line-height:1.4;
+  transition:color .55s ease;
+}
+.rit-title em{font-style:normal;color:var(--rit-lbl)}
+.rit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ri{
+  border-left:2px solid var(--rit-item);
+  padding:.9rem 1.3rem;
+  transition:border-color .55s ease;
+}
+.ri-lbl{
+  font-size:8.5px;font-weight:500;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--rit-lbl);margin-bottom:.5rem;opacity:.8;
+  transition:color .55s ease;
+}
+.ri-txt{
+  font-family:'Spectral',serif;
+  font-size:14.5px;font-style:italic;
+  color:var(--rit-txt);line-height:1.8;
+  transition:color .55s ease;
+}
 
-  .closing-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 5vw, 46px);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.3;
-    color: var(--parchment);
-    margin-bottom: 32px;
-  }
+/* ─── INTENTION ─── */
+.intention{
+  margin-bottom:84px;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .9s ease,transform .9s ease;
+}
+.intention.vis{opacity:1;transform:translateY(0)}
 
-  .closing-quote span {
-    color: var(--gold-light);
-    font-weight: 600;
-  }
+.int-eyebrow{
+  font-size:9px;font-weight:500;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.4rem;opacity:.85;
+  display:flex;align-items:center;gap:16px;
+  transition:color .55s ease;
+}
+.int-eyebrow::after{content:'';flex:1;height:1px;background:var(--rule)}
 
-  .signature {
-    font-size: 10px;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 40px;
-  }
+.int-head{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3.2vw,30px);
+  font-style:italic;font-weight:300;
+  color:var(--head);margin-bottom:.6rem;
+  transition:color .55s ease;
+}
+.int-sub{
+  font-family:'Spectral',serif;
+  font-size:14.5px;font-style:italic;
+  color:var(--text3);margin-bottom:1.8rem;
+  transition:color .55s ease;
+}
 
-  /* Roman numeral counter */
-  .roman {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    color: rgba(201,168,76,0.5);
-    letter-spacing: 0.2em;
-    margin-right: 8px;
-  }
+.int-box{
+  border:1px solid var(--int-bd);
+  padding:2rem 2rem 1.5rem;
+  background:var(--pull-bg);
+  transition:border-color .3s ease,background .55s ease;
+}
+.int-box:focus-within{border-color:var(--gold)}
+.int-area{
+  width:100%;background:transparent;border:none;
+  padding:0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(17px,2.5vw,22px);
+  font-style:italic;font-weight:300;
+  color:var(--int-txt);outline:none;resize:none;
+  min-height:88px;line-height:1.75;
+  caret-color:var(--gold);
+  transition:color .55s ease;
+}
+.int-area::placeholder{color:var(--int-ph)}
+.int-foot{
+  display:flex;justify-content:flex-end;
+  padding-top:1rem;
+  border-top:1px solid var(--rule);
+  margin-top:1rem;
+}
+.int-btn{
+  background:var(--int-btn-bg);
+  color:var(--int-btn-txt);
+  border:1px solid var(--int-btn-bd);
+  padding:10px 28px;
+  font-family:'Raleway',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:.35em;
+  text-transform:uppercase;cursor:pointer;
+  transition:all .3s ease;
+}
+.int-btn:hover{opacity:.7}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+.int-shown{
+  display:none;margin-top:2rem;
+  padding:2rem 2.2rem;
+  background:var(--int-disp);
+  border-left:2px solid var(--int-disp-bd);
+  transition:all .55s ease;
+}
+.int-shown p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.8vw,24px);
+  font-style:italic;font-weight:300;
+  color:var(--pull-txt);line-height:1.7;
+  transition:color .55s ease;
+}
+.int-reset{
+  display:none;
+  background:none;border:none;
+  font-family:'Raleway',sans-serif;
+  font-size:9px;font-weight:400;letter-spacing:.3em;
+  color:var(--muted);cursor:pointer;
+  margin-top:1rem;opacity:.6;
+  transition:opacity .3s ease;
+}
+.int-reset:hover{opacity:1}
 
-  @media (max-width: 560px) {
-    .page { padding: 60px 24px 80px; }
-    .pillars { grid-template-columns: 1fr; }
-  }
+/* ─── CLOSING ─── */
+.closing{
+  text-align:center;padding:0 0 100px;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .9s ease,transform .9s ease;
+}
+.closing.vis{opacity:1;transform:translateY(0)}
+.closing-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,6.5vw,68px);
+  font-weight:300;line-height:1.15;
+  color:var(--head);letter-spacing:-.01em;
+  margin-bottom:2rem;
+  transition:color .55s ease;
+}
+.closing-title em{font-style:italic;color:var(--em)}
+.closing-b{
+  font-family:'Spectral',serif;
+  font-size:16.5px;line-height:2;
+  color:var(--muted);max-width:500px;
+  margin:0 auto 3.5rem;
+  transition:color .55s ease;
+}
+.sig-rule{
+  width:50px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  margin:0 auto 1.6rem;
+  transition:background .55s ease;
+}
+.sig{
+  font-size:9px;font-weight:400;letter-spacing:.5em;
+  color:var(--muted);opacity:.5;
+}
+
+/* ─── ANIMS ─── */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes widen{from{opacity:0;width:0}to{opacity:1;width:70px}}
+@keyframes breathe{0%,100%{opacity:.3}50%{opacity:.95}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:620px){
+  .wrap{padding:72px 26px 60px}
+  .master-wrap{margin:0 -26px 84px;padding:60px 32px}
+  .ritual{padding:40px 28px}
+  .rit-grid{grid-template-columns:1fr}
+  .phrases{grid-template-columns:1fr}
+  .toggle{top:14px;right:14px;padding:8px 14px}
+}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="header">
-    <div class="overline">A personal manifesto</div>
-    <h1 class="title">This Is<br><em>Your Time</em></h1>
-    <div class="divider"></div>
-    <p style="font-size:13px; color: rgba(245,240,232,0.5); letter-spacing:0.12em;">Read this whenever you forget who you are becoming.</p>
+<!-- TOGGLE -->
+<button class="toggle" onclick="toggleTheme()">
+  <span class="tog-icon" id="togIcon">☽</span>
+  <span id="togLabel">Night</span>
+</button>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="stars" id="stars"></div>
+  <div class="petals" id="petals"></div>
+  <div class="h-inner">
+    <p class="h-over">A Personal Manifesto</p>
+    <h1 class="h-title">
+      My Greatest<br>
+      Chapter<br>
+      <em>Begins Now.</em>
+    </h1>
+    <div class="h-bar"></div>
+    <p class="h-tag">"I am not behind.<br>I am loading."</p>
+    <p class="h-sub">Return here whenever you forget who you are becoming</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Begin</span>
+    <div class="scroll-needle"></div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ══ GROUNDING ARC ══ -->
+
+  <div class="section">
+    <div class="smeta"><span class="srom">I</span><span class="slbl">On Who You Are</span><div class="sline"></div></div>
+    <h2 class="sh">You were not built for comfort. You were built for something that has <em>not happened yet.</em></h2>
+    <p class="sb">The blood in you carries generations who built something from nothing — who endured without applause and chose, quietly, to keep going. That is not history. That is the force running through you right now. The hunger you feel is not a flaw. It is the most important signal of your life. Do not silence it. Do not explain it away. Let it lead.</p>
+    <div class="pull"><p>"My potential is not a ceiling. It is a direction."</p></div>
   </div>
 
   <div class="section">
-    <div class="section-label"><span class="roman">I</span> On Potential</div>
-    <p class="pull-quote">You were not built for <strong>comfort</strong>. You were built for something that hasn't happened yet.</p>
-    <p class="body-text">Most people spend their whole lives at the edge of who they could be — looking in, never crossing over. The gap between who you are today and who you are capable of becoming is not a source of shame. It is the most exciting territory that exists. That gap is your life's work. Every morning you wake up, you get to shrink it. No one else can do that for you, and no one can stop you from doing it either.</p>
+    <div class="smeta"><span class="srom">II</span><span class="slbl">On Stillness and Roots</span><div class="sline"></div></div>
+    <h2 class="sh">Before you can rise with force, you must first <em>know where you stand.</em></h2>
+    <p class="sb">The most grounded people are not the ones who never doubt — they are the ones who have sat with their doubt long enough to understand it. Know your values. Know what you will not trade. Know the difference between a detour and a wrong turn. That knowledge is not weakness. It is the anchor that lets you move fast without being swept away.</p>
+    <div class="pull"><p>"I know what I am for. That is enough to begin."</p></div>
   </div>
 
   <div class="section">
-    <div class="section-label"><span class="roman">II</span> On the World You Live In</div>
-    <p class="pull-quote">You live in the most <strong>leveraged moment</strong> in human history. Use it.</p>
-    <p class="body-text">The tools available to you right now — AI, information, connectivity — are not distractions. They are amplifiers. Every hour of focused work you do today produces more output, more learning, and more opportunity than it would have for any previous generation. You are not behind. You are standing at the beginning of the largest shift in human productivity the world has ever seen. The question is not whether the wave is coming. It already has. The question is whether you're on it.</p>
+    <div class="smeta"><span class="srom">III</span><span class="slbl">On Abundance</span><div class="sline"></div></div>
+    <h2 class="sh">Abundance is not the destination. <em>Abundance is the lens.</em></h2>
+    <p class="sb">Through scarcity you shrink — playing not to lose instead of playing to win. Through abundance — what you already have, what you have survived, what is available to you today — everything opens. You take smarter risks. You give more generously. You attract more because you radiate more. This shift is not naïve optimism. It is the most strategic decision you can make about how you see the world.</p>
+    <div class="pull"><p>"I do not chase abundance. I recognise it. It was here all along."</p></div>
   </div>
 
-  <div class="highlight-box">
-    <p>"The person who uses today's tools with yesterday's hunger will outpace everyone who has neither. You have both. Stop waiting for permission."</p>
+  <div class="div"><div class="dl"></div><div class="dorn"><div class="ddt"></div><div class="dsq"></div><div class="ddt"></div></div><div class="dl"></div></div>
+
+  <!-- ══ BUILDING ARC ══ -->
+
+  <div class="section">
+    <div class="smeta"><span class="srom">IV</span><span class="slbl">On Money and Freedom</span><div class="sline"></div></div>
+    <h2 class="sh">Financial freedom is not about being rich. It is about <em>never being trapped.</em></h2>
+    <p class="sb">Every dollar saved with intention is a vote for your future freedom. Cut what drains you. Build what grows you. Your financial life must be designed, not defaulted into. The people who reach their financial goals are not smarter — they simply made the decision, and then made it again every single day. What you build does not end with you. It begins with you.</p>
+    <div class="pull"><p>"I build wealth not for status. I build it for freedom — and for the ones I love."</p></div>
   </div>
 
   <div class="section">
-    <div class="section-label"><span class="roman">III</span> On Money & Freedom</div>
-    <p class="pull-quote">Financial freedom is not about being <strong>rich</strong>. It is about never being trapped.</p>
-    <p class="body-text">Every dollar saved, every skill earned, every income stream built is a vote for your future freedom. The people who achieve financial goals are not smarter than you. They simply made a decision — clearly, firmly, irrevocably — that their financial life would be intentional and not accidental. Make that decision now. Not tomorrow. Today's small choices compound into next year's options. And options are what freedom is made of.</p>
+    <div class="smeta"><span class="srom">V</span><span class="slbl">On Your Body</span><div class="sline"></div></div>
+    <h2 class="sh">Your body is the only hardware you will ever run your entire life on. <em>Honour it like it matters.</em></h2>
+    <p class="sb">Every breakthrough, every joy, every relationship, every idea — all of it runs through this one body. Move consistently. Sleep seriously. Eat with intention. Not to chase a standard, but because the energy you invest here returns multiplied in ways no other investment can match — sharper thinking, steadier will, longer life, more of everything you want.</p>
+    <div class="pull"><p>"My body is not a liability I manage. It is the vehicle to everything I want."</p></div>
   </div>
 
   <div class="section">
-    <div class="section-label"><span class="roman">IV</span> On Your Body</div>
-    <p class="pull-quote">Your body is the <strong>only hardware</strong> you will ever run your life on.</p>
-    <p class="body-text">Every career breakthrough, every moment of joy, every relationship, every idea — it all runs through the same body. The energy you invest in it returns multiplied: sharper thinking, stronger will, longer life. You do not need to be perfect. You need to be consistent. Show up for your body like it shows up for you every single day — without complaint, without demands, just ready. Honor that.</p>
+    <div class="smeta"><span class="srom">VI</span><span class="slbl">On Career and Purpose</span><div class="sline"></div></div>
+    <h2 class="sh">The career you want is on the other side of doing the work <em>no one else wants to do yet.</em></h2>
+    <p class="sb">You need a next step — not a perfect plan. The people shaping the future of work are not the most talented — they are the most adaptable. They learn faster, recover faster, and pivot without breaking. Build your reputation one kept promise at a time. Show up with full presence where others give half. That gap — between full and half — is where careers are made and purpose quietly reveals itself.</p>
+    <div class="pull"><p>"I do not perform success. I build it — quietly, boldly, on my own terms."</p></div>
   </div>
 
-  <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-icon">⚡</div>
-      <div class="pillar-title">Momentum</div>
-      <p class="pillar-text">Start before you're ready. Clarity comes from motion, not stillness. The first step is always the hardest and always worth it.</p>
+  <div class="section">
+    <div class="smeta"><span class="srom">VII</span><span class="slbl">On the Age You Live In</span><div class="sline"></div></div>
+    <h2 class="sh">You live at the most <em>leveraged moment</em> in all of human history. Use it without apology.</h2>
+    <p class="sb">AI, information, global reach — these are not distractions. They are force multipliers available to anyone with hunger and judgment. A person with your drive and these tools is among the most capable humans ever to walk this earth. The question is no longer what is possible. The question is whether you will claim what is possible. Claim it.</p>
+    <div class="pull"><p>"AI does not replace me. It multiplies me."</p></div>
+  </div>
+
+  <div class="section">
+    <div class="smeta"><span class="srom">VIII</span><span class="slbl">On People and Your Circle</span><div class="sline"></div></div>
+    <h2 class="sh">The people closest to you will either <em>compound your growth</em> — or quietly drain it.</h2>
+    <p class="sb">This is not cruelty. It is physics. Energy transfers between people constantly. Guard yours with the same seriousness you bring to your finances. Give generously to those who lift you. Quietly, without drama, reduce time with those who dim you. Your circle is not just company — it is your compounding environment. Choose it with care.</p>
+    <div class="pull"><p>"I choose people who make me more of who I am becoming."</p></div>
+  </div>
+
+  <div class="div"><div class="dl"></div><div class="dorn"><div class="ddt"></div><div class="dsq"></div><div class="ddt"></div></div><div class="dl"></div></div>
+
+  <!-- ══ FIRE ARC ══ -->
+
+  <div class="section">
+    <div class="smeta"><span class="srom">IX</span><span class="slbl">On Self-Compassion</span><div class="sline"></div></div>
+    <h2 class="sh">You are allowed to be tired. <em>You are not allowed to be cruel to yourself.</em></h2>
+    <p class="sb">The harshest voice in the room is often yours, directed inward. That voice mistakes punishment for discipline. It is wrong. The most productive thing you can do on the days you fall short is to treat yourself with the same steady patience you would give someone you love. Rest is not retreat. Gentleness is not weakness. They are the conditions under which you return stronger.</p>
+    <div class="pull"><p>"I recover well. That is part of my strength."</p></div>
+  </div>
+
+  <div class="section">
+    <div class="smeta"><span class="srom">X</span><span class="slbl">On Hard Days</span><div class="sline"></div></div>
+    <h2 class="sh">The feeling of standing still is the most <em>deceptive feeling</em> there is.</h2>
+    <p class="sb">It arrives at exactly the moment when the most important invisible growth is happening underground — in the roots, before any flower. Every success ever achieved was built by someone who refused to make their hardest day their last day. You are not behind. You are not broken. You are building. There is a difference, and it matters more than you know right now.</p>
+    <div class="pull"><p>"I was not born soft. I was built to last."</p></div>
+  </div>
+
+  <!-- ══ CATCHPHRASES ══ -->
+  <div class="div"><div class="dl"></div><div class="dorn"><div class="ddt"></div><div class="dsq"></div><div class="ddt"></div></div><div class="dl"></div></div>
+  <div class="ph-hdr">
+    <h3>Your Catchphrases</h3>
+    <span>Six. Sharp. Carry them.</span>
+  </div>
+  <div class="phrases">
+    <div class="pc"><div class="pc-lbl">When you feel behind</div><div class="pc-txt">"I am not behind. I am loading."</div></div>
+    <div class="pc"><div class="pc-lbl">On potential</div><div class="pc-txt">"My potential is not a ceiling. It is a direction."</div></div>
+    <div class="pc"><div class="pc-lbl">On abundance</div><div class="pc-txt">"I do not chase abundance. I recognise it."</div></div>
+    <div class="pc"><div class="pc-lbl">On wealth</div><div class="pc-txt">"I build it for freedom — and for the ones I love."</div></div>
+    <div class="pc"><div class="pc-lbl">On your circle</div><div class="pc-txt">"I choose people who make me more of who I am becoming."</div></div>
+    <div class="pc"><div class="pc-lbl">On hard days</div><div class="pc-txt">"I was not born soft. I was built to last."</div></div>
+  </div>
+
+  <!-- ══ MASTER PHRASE — full bleed ══ -->
+  <div class="master-wrap">
+    <p class="master-eye">The master phrase — say it every morning</p>
+    <p class="master-phrase">
+      "My greatest chapter<br>begins now.<br>And now.<br>And now."
+      <strong>Say it until you believe it. Then say it again.</strong>
+    </p>
+  </div>
+
+  <!-- ══ RITUAL ══ -->
+  <div class="ritual">
+    <p class="rit-eye">How to use this manifesto</p>
+    <h3 class="rit-title">A practice, not just a <em>page.</em></h3>
+    <div class="rit-grid">
+      <div class="ri"><div class="ri-lbl">Every Morning</div><div class="ri-txt">Say the master phrase aloud before you pick up your phone.</div></div>
+      <div class="ri"><div class="ri-lbl">Each Week</div><div class="ri-txt">Choose one catchphrase. Live by it for seven days. Make it yours.</div></div>
+      <div class="ri"><div class="ri-lbl">On Hard Days</div><div class="ri-txt">Read Section IX first. Then X. Then your intention below.</div></div>
+      <div class="ri"><div class="ri-lbl">First of Each Month</div><div class="ri-txt">Read the full manifesto. Write a fresh intention. Measure the gap honestly.</div></div>
     </div>
-    <div class="pillar">
-      <div class="pillar-icon">🔩</div>
-      <div class="pillar-title">Discipline</div>
-      <p class="pillar-text">Motivation is a visitor. Discipline lives here. Build systems, not streaks. What you do on your worst days defines your floor.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">🧠</div>
-      <div class="pillar-title">Leverage</div>
-      <p class="pillar-text">Use AI, use tools, use knowledge. Working hard on the wrong things is just slow failure. Work smart, then work hard on top of that.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">🌱</div>
-      <div class="pillar-title">Patience</div>
-      <p class="pillar-text">Nothing meaningful arrives in a day. But everything meaningful begins in a day — including this one, right now, as you read this.</p>
-    </div>
   </div>
 
-  <div class="section">
-    <div class="section-label"><span class="roman">V</span> On Career</div>
-    <p class="pull-quote">The career you want is on the other side of <strong>doing the work</strong> no one else wants to do yet.</p>
-    <p class="body-text">You do not need a perfect plan. You need a next step and the courage to take it. The people shaping the future of work right now are not the most talented — they are the most adaptable. They learn faster, ship faster, and recover faster. Be that person. Build your reputation one kept promise at a time. Show up with full presence where others bring half their attention. That gap — between full and half — is where careers are made.</p>
+  <!-- ══ INTENTION ══ -->
+  <div class="intention">
+    <div class="int-eyebrow">Your Intention</div>
+    <h3 class="int-head">What are you committing to right now?</h3>
+    <p class="int-sub">One sentence. Write it like you mean it.</p>
+    <div class="int-box">
+      <textarea class="int-area" id="intInput" placeholder="Write it here…" rows="3"></textarea>
+      <div class="int-foot">
+        <button class="int-btn" onclick="setInt()">Commit to this</button>
+      </div>
+    </div>
+    <div class="int-shown" id="intShown">
+      <p id="intTxt"></p>
+    </div>
+    <button class="int-reset" id="intReset" onclick="resetInt()">↺ Write a new intention</button>
   </div>
 
-  <div class="section">
-    <div class="section-label"><span class="roman">VI</span> The Promise</div>
-    <p class="pull-quote">None of this requires a <strong>perfect version</strong> of you. It requires the real one.</p>
-    <p class="body-text">You don't need to eliminate doubt. You need to move despite it. You don't need to feel ready. You need to begin anyway. The version of you that reaches your goals is not some distant, idealized stranger — it is simply you, compounded. Same heart. Same mind. Just more reps, more patience, more mornings where you chose to show up instead of give up.</p>
-  </div>
-
+  <!-- ══ CLOSING ══ -->
   <div class="closing">
-    <div class="divider"></div>
-    <p class="closing-quote">You already have everything<br>it takes to become<br><span>everything you imagined.</span></p>
-    <p style="font-size:14px; color: rgba(245,240,232,0.5); line-height:1.8; max-width: 420px; margin: 0 auto;">Now close this. Go build it. And come back here on the days you forget — because you will forget, and that's okay. This will be waiting.</p>
-    <p class="signature">Written for you &nbsp;·&nbsp; March 2026</p>
+    <div class="div"><div class="dl"></div><div class="dorn"><div class="ddt"></div><div class="dsq"></div><div class="ddt"></div></div><div class="dl"></div></div>
+    <h2 class="closing-title">You already have everything<br>it takes to become<br><em>everything you imagined.</em></h2>
+    <p class="closing-b">The best version of you is not a distant stranger. It is simply you, compounded. Same heart. Same mind. More reps. More patience. More mornings where you chose to show up instead of give up. Close this. Go build it. Come back when you forget — and you will forget, and that is okay. This will be here.</p>
+    <div class="sig-rule"></div>
+    <p class="sig">Your Manifesto &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Written for the one who is ready</p>
   </div>
 
-</div>
+</main>
+
+<script>
+// ── SCROLL REVEAL ──
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis') })
+},{threshold:.08});
+document.querySelectorAll('.section,.ritual,.intention,.closing').forEach(el=>io.observe(el));
+
+// ── STARS (dark) ──
+const sf = document.getElementById('stars');
+for(let i=0;i<100;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${3+Math.random()*6}s;--dl:${Math.random()*8}s;--op:${.1+Math.random()*.45}`;
+  sf.appendChild(s);
+}
+
+// ── PETALS (light) ──
+const pf = document.getElementById('petals');
+for(let i=0;i<30;i++){
+  const p=document.createElement('div');
+  p.className='petal';
+  p.style.cssText=`left:${Math.random()*100}%;top:${20+Math.random()*70}%;--d:${6+Math.random()*8}s;--dl:${Math.random()*10}s`;
+  pf.appendChild(p);
+}
+
+// ── THEME TOGGLE ──
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('togIcon').textContent=isDark?'☀︎':'☽';
+  document.getElementById('togLabel').textContent=isDark?'Day':'Night';
+}
+
+// ── INTENTION ──
+function setInt(){
+  const val=document.getElementById('intInput').value.trim();
+  if(!val) return;
+  document.getElementById('intTxt').textContent='\u201C'+val+'\u201D';
+  document.getElementById('intShown').style.display='block';
+  document.getElementById('intReset').style.display='block';
+  document.querySelector('.int-box').style.display='none';
+}
+function resetInt(){
+  document.getElementById('intInput').value='';
+  document.getElementById('intShown').style.display='none';
+  document.getElementById('intReset').style.display='none';
+  document.querySelector('.int-box').style.display='block';
+}
+</script>
 </body>
 </html>
