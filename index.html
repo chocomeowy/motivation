@@ -39,7 +39,7 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; position: relative; width: 100%; }
 
 body {
   background: var(--bg);
@@ -48,6 +48,8 @@ body {
   font-size: 18px;
   line-height: 1.7;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
   transition: background 0.4s, color 0.4s;
 }
 
@@ -67,7 +69,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 9999;
   padding: 12px 40px;
   padding-top: max(12px, env(safe-area-inset-top));
   display: flex;
@@ -77,8 +79,6 @@ nav {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transform: translateZ(0); /* Force GPU layer for Android stability */
-  will-change: transform;
 }
 
 #progress-bar {
@@ -88,7 +88,7 @@ nav {
   height: 3px;
   background: linear-gradient(90deg, var(--gold), var(--gold2));
   width: 0%;
-  z-index: 1001;
+  z-index: 10000;
   transition: width 0.1s linear;
 }
 
@@ -775,6 +775,7 @@ body.essentials-only .hero-glow, body.essentials-only .hero-glow-secondary { opa
   .mobile-action-bar { display: flex; }
   .manifesto { padding-bottom: 200px; }
   .section p { max-width: 100%; font-size: 1rem; line-height: 1.8; }
+  .break-glass { margin: 100px -20px 0; }
 }
 
 /* Nav Spy */
