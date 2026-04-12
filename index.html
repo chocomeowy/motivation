@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Greatest Chapter Begins Now</title>
+<title>MANIFESTO</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -111,6 +111,167 @@ nav {
 
 .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
 
+/* ============================= */
+/* AMBIENT GLOW                  */
+/* ============================= */
+.hero-glow {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, rgba(200,169,110,0.02) 35%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowFloat 14s ease-in-out infinite alternate;
+}
+
+[data-theme="light"] .hero-glow {
+  background: radial-gradient(circle, rgba(138,104,48,0.12) 0%, rgba(138,104,48,0.04) 35%, transparent 70%);
+}
+[data-theme="light"] .hero-glow-secondary { 
+  background: radial-gradient(circle, rgba(138,104,48,0.08) 0%, transparent 60%); 
+}
+
+@keyframes glowFloat {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  25%  { transform: translate(30px, -20px) scale(1.08); opacity: 0.7; }
+  50%  { transform: translate(-15px, 25px) scale(0.96); opacity: 0.4; }
+  75%  { transform: translate(20px, 10px) scale(1.04); opacity: 0.65; }
+  100% { transform: translate(-10px, -15px) scale(1.02); opacity: 0.55; }
+}
+
+.hero-glow-secondary {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,169,110,0.03) 0%, transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowFloat2 18s ease-in-out infinite alternate;
+}
+
+@keyframes glowFloat2 {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  100% { transform: translate(-25px, 15px) scale(1.1); opacity: 0.5; }
+}
+
+/* ======================================== */
+/* GIVE ME A PHRASE FAB + OVERLAY         */
+/* ======================================== */
+.phrase-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fabIn 0.6s ease 1.2s forwards;
+}
+
+@keyframes fabIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.phrase-fab:hover {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(200,169,110,0.1);
+}
+
+.phrase-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 997;
+  background: rgba(8,8,9,0.93);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+  cursor: pointer;
+}
+
+[data-theme="light"] .phrase-overlay {
+  background: rgba(245,240,232,0.95);
+}
+
+.phrase-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.po-context {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease 0.12s, transform 0.45s ease 0.12s;
+}
+
+.phrase-overlay.open .po-context {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.po-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  text-align: center;
+  max-width: 640px;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.phrase-overlay.open .po-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.po-dismiss {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 44px;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.55s;
+}
+
+.phrase-overlay.open .po-dismiss { opacity: 1; }
+
 /* Hero */
 .hero {
   min-height: 100vh;
@@ -122,6 +283,11 @@ nav {
   max-width: 960px;
   margin: 0 auto;
   position: relative;
+}
+
+.hero > *:not(.hero-glow):not(.hero-glow-secondary) {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-eyebrow {
@@ -308,7 +474,19 @@ nav {
   gap: 40px 60px;
 }
 
-.phrase-item {}
+.phrase-item {
+  transition: transform 0.3s ease, background 0.3s ease;
+  padding: 20px;
+  margin: -20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.phrase-item:hover {
+  background: var(--bg);
+  border-color: var(--border);
+  transform: translateY(-2px);
+}
 
 .phrase-context {
   font-family: 'DM Mono', monospace;
@@ -351,9 +529,35 @@ nav {
   line-height: 1;
   letter-spacing: 0.04em;
   color: var(--text);
+  min-height: 3.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.master-phrase span { color: var(--gold); display: block; }
+.master-phrase .mp-line {
+  display: block;
+  min-height: 1.05em;
+  overflow: hidden;
+}
+
+.master-phrase .mp-gold { color: var(--gold); }
+
+.mp-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.8em;
+  background: var(--gold);
+  vertical-align: baseline;
+  margin-left: 3px;
+  animation: blink 0.65s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
 
 .master-sub {
   font-size: 0.85rem;
@@ -361,7 +565,11 @@ nav {
   color: var(--text-dim);
   margin-top: 32px;
   font-family: 'Cormorant Garamond', serif;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
+
+.master-sub.revealed { opacity: 1; }
 
 /* Tracks */
 .tracks {
@@ -504,6 +712,8 @@ nav {
 @media (max-width: 640px) {
   nav { padding: 16px 20px; }
   .hero { padding: 100px 20px 60px; }
+  .hero-glow { width: 320px; height: 320px; left: 5%; top: 20%; }
+  .hero-glow-secondary { display: none; }
   .manifesto { padding: 0 20px 80px; }
   .phrases-grid { grid-template-columns: 1fr; gap: 28px; }
   .tracks { grid-template-columns: 1fr; }
@@ -513,21 +723,135 @@ nav {
   .intention-wrap { padding: 32px 24px; }
   .closing { padding: 60px 20px; }
 }
+
+/* Essentials Mode */
+body.essentials-only .hide-on-essentials { display: none !important; }
+body.essentials-only .rule { display: none !important; }
+body.essentials-only .hero-glow, body.essentials-only .hero-glow-secondary { opacity: 0.2; }
+
+/* Enhanced Spacing */
+.section p {
+  max-width: 640px;
+  line-height: 1.95;
+  margin-bottom: 28px;
+}
+.pull-quote { margin: 48px 0; }
+
+/* Mobile Action Bar */
+.mobile-action-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  z-index: 100;
+  padding: 12px 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+.mob-action {
+  color: var(--text-mid);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: none;
+  border: none;
+}
+.mob-action:hover, .mob-action:active { color: var(--gold); }
+@media(max-width: 640px) {
+  .phrase-fab { display: none !important; }
+  .mobile-action-bar { display: flex; }
+  .manifesto { padding-bottom: 200px; }
+  .section p { max-width: 100%; font-size: 1rem; line-height: 1.8; }
+}
+
+/* Nav Spy */
+
+.nav-spy { max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; vertical-align: middle; }
+@media (max-width: 640px) { .nav-spy { max-width: 80px; } }
+
+.nav-left { display: flex; align-items: center; gap: 20px; }
+.nav-spy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+
+/* Icons & Interactions */
+.icon-btn {
+  background: none; border: none; color: var(--text-dim);
+  font-size: 1rem; cursor: pointer; transition: color 0.2s, transform 0.2s;
+  padding: 4px;
+}
+.icon-btn:hover { color: var(--gold); transform: scale(1.1); }
+.pinned .icon-btn.pin-btn { color: var(--gold); }
+
+/* Emergency Protocol */
+.break-glass {
+  margin: 100px -40px 0;
+  padding: 100px 40px;
+  border-top: 1px solid rgba(200,169,110,0.12);
+  border-bottom: 1px solid rgba(200,169,110,0.12);
+  background: var(--bg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.break-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200,169,110,0.035) 0%, transparent 65%);
+  pointer-events: none;
+}
+[data-theme="light"] .break-glass::before { background: radial-gradient(ellipse at center, rgba(138,104,48,0.035) 0%, transparent 65%); }
+.bg-label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; position: relative; }
+.bg-subtitle { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 56px; position: relative; }
+.bg-lines { display: flex; flex-direction: column; gap: 40px; max-width: 540px; margin: 0 auto; position: relative; }
+.bg-line-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); opacity: 0.45; display: block; margin-bottom: 10px; }
+.bg-line-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.8vw, 1.6rem); font-weight: 300; font-style: italic; color: var(--text); line-height: 1.55; }
+.bg-line-text em { font-style: normal; color: var(--gold); font-weight: 400; }
+
+.cat-btn {
+  background: transparent; border: 1px solid var(--border); color: var(--text-mid);
+  padding: 12px 24px; font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;
+  margin: 8px; border-radius: 4px;
+}
+.cat-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.po-menu { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 32px; gap: 12px; }
+
+
+body.essentials-only .show-on-essentials { display: inline !important; }
 </style>
 </head>
 <body>
 
 <div id="progress-bar"></div>
 
-<nav>
-  <a class="nav-brand" href="#">MGCBN</a>
+
+<nav id="top-nav">
+  <div class="nav-left">
+    <a class="nav-brand" href="#">MANIFESTO</a>
+    <span class="nav-spy" id="nav-spy"></span>
+  </div>
   <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleEssentials()" id="essentials-btn" title="Read Only Essentials">Essentials</button>
+    <a class="theme-toggle" href="#emergency-section" style="text-decoration:none; display:inline-flex; align-items:center;">Hard Day</a>
     <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">Light</button>
   </div>
 </nav>
 
+
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-secondary"></div>
   <div class="hero-eyebrow">A Personal Manifesto &nbsp;·&nbsp; 2026</div>
   <h1 class="hero-title">
     My Greatest<br>
@@ -549,7 +873,7 @@ nav {
 <main class="manifesto">
 
   <!-- I: WHO YOU ARE -->
-  <div class="section" id="section-1">
+  <div class="section hide-on-essentials" id="section-1">
     <div class="section-num">I</div>
     <div class="section-label">On Who You Are</div>
     <h2>You were not built for comfort.<br>You were built for something that has <em>not happened yet.</em></h2>
@@ -559,7 +883,7 @@ nav {
   </div>
 
   <!-- II: THIS SEASON -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">II</div>
     <div class="section-label">On This Season</div>
     <h2>This is not a pause.<br><em>This is the loading screen</em> before the best level.</h2>
@@ -569,7 +893,7 @@ nav {
   </div>
 
   <!-- III: ABUNDANCE -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">III</div>
     <div class="section-label">On Abundance</div>
     <h2>You already have more than<br>you give yourself <em>credit for.</em></h2>
@@ -579,7 +903,7 @@ nav {
   </div>
 
   <!-- IV: MONEY -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">IV</div>
     <div class="section-label">On Money and Freedom</div>
     <h2>You are not building wealth.<br>You are building <em>options.</em></h2>
@@ -589,7 +913,7 @@ nav {
   </div>
 
   <!-- V: LOVE -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">V</div>
     <div class="section-label">On Love and Partnership</div>
     <h2>The person beside you<br>chose you <em>before the chapter peaked.</em></h2>
@@ -599,7 +923,7 @@ nav {
   </div>
 
   <!-- VI: BODY -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">VI</div>
     <div class="section-label">On Your Body</div>
     <h2>Your body sent you a message.<br><em>You listened.</em> That matters.</h2>
@@ -608,8 +932,18 @@ nav {
     <div class="pull-quote">"My body is not a liability I manage. It is the vehicle to everything I want."</div>
   </div>
 
+  
+  <!-- MIDPOINT RESET -->
+  <div class="section hide-on-essentials midpoint-reset" style="text-align: center; padding: 120px 20px; max-width: 600px; margin: 40px auto; min-height: 30vh; display: flex; flex-direction: column; justify-content: center;">
+    <div style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 32px; text-transform: uppercase;">A Checkpoint</div>
+    <div style="font-size: 1.35rem; font-style: italic; color: var(--text-mid); line-height: 1.8;">
+      "Pause here. Breathe.<br>You do not need to carry the entire future at once."
+    </div>
+  </div>
+
   <!-- VII: CAREER -->
-  <div class="section">
+
+  <div class="section hide-on-essentials">
     <div class="section-num">VII</div>
     <div class="section-label">On Career and Purpose</div>
     <h2>The role you want is at the intersection<br>of AI and finance. You are <em>already living there.</em></h2>
@@ -619,7 +953,7 @@ nav {
   </div>
 
   <!-- VIII: AI LEVERAGE -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">VIII</div>
     <div class="section-label">On Leverage</div>
     <h2>You live at the most leveraged moment<br>in human history. <em>Use it without apology.</em></h2>
@@ -629,7 +963,7 @@ nav {
   </div>
 
   <!-- IX: SELF-COMPASSION -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">IX</div>
     <div class="section-label">On Self-Compassion</div>
     <h2>You are allowed to feel the weight.<br><em>You are not allowed to become it.</em></h2>
@@ -639,7 +973,7 @@ nav {
   </div>
 
   <!-- X: HARD DAYS -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">X</div>
     <div class="section-label">On Hard Days</div>
     <h2>The feeling of standing still is the most<br><em>deceptive feeling</em> there is.</h2>
@@ -649,7 +983,7 @@ nav {
   </div>
 
   <!-- XI: CIRCLE -->
-  <div class="section">
+  <div class="section hide-on-essentials">
     <div class="section-num">XI</div>
     <div class="section-label">On Your Circle</div>
     <h2>The people closest to you<br>will either compound your growth <em>or quietly drain it.</em></h2>
@@ -660,7 +994,7 @@ nav {
 
   <!-- CATCHPHRASES -->
   <div class="catchphrases section">
-    <div class="catchphrases-title">SIX CATCHPHRASES &nbsp;·&nbsp; CARRY THEM</div>
+    <div class="catchphrases-title"><span class="hide-on-essentials">SIX </span><span style="display:none;" class="show-on-essentials">THREE </span>CATCHPHRASES &nbsp;·&nbsp; CARRY THEM</div>
     <div class="phrases-grid">
       <div class="phrase-item">
         <div class="phrase-context">When you feel behind</div>
@@ -674,15 +1008,15 @@ nav {
         <div class="phrase-context">On abundance</div>
         <div class="phrase-text">"I do not chase abundance. I recognise it."</div>
       </div>
-      <div class="phrase-item">
+      <div class="phrase-item hide-on-essentials">
         <div class="phrase-context">On wealth</div>
         <div class="phrase-text">"I build it for freedom -- and for the ones I love."</div>
       </div>
-      <div class="phrase-item">
+      <div class="phrase-item hide-on-essentials">
         <div class="phrase-context">On your circle</div>
         <div class="phrase-text">"I choose people who make me more of who I am becoming."</div>
       </div>
-      <div class="phrase-item">
+      <div class="phrase-item hide-on-essentials">
         <div class="phrase-context">On hard days</div>
         <div class="phrase-text">"I was not born soft. I was built to last."</div>
       </div>
@@ -692,10 +1026,8 @@ nav {
   <!-- MASTER PHRASE -->
   <div class="master section">
     <div class="master-label">The Master Phrase &nbsp;·&nbsp; Say it every morning</div>
-    <div class="master-phrase">
-      My Greatest
-      <span>Chapter</span>
-      Begins Now.
+    <div class="master-phrase" id="typer-target">
+      <!-- Injected by JS -->
     </div>
     <div class="master-sub">And now. And now. Say it until you believe it. Then say it again.</div>
   </div>
@@ -727,7 +1059,7 @@ nav {
     </div>
   </div>
 
-  <div class="ritual section">
+  <div class="ritual section hide-on-essentials">
     <div class="ritual-title">A PRACTICE, NOT JUST A PAGE</div>
     <div class="ritual-items">
       <div class="ritual-item">
@@ -749,18 +1081,40 @@ nav {
     </div>
   </div>
 
+  
   <!-- DAILY WORD -->
   <div class="intention-wrap section" id="daily-word-section">
-    <div class="intention-label">Today's Word &nbsp;·&nbsp; <span id="today-date"></span></div>
-    <div id="daily-word" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,5.5rem);line-height:1;color:var(--gold);margin:16px 0 12px;letter-spacing:0.04em;"></div>
-    <div id="daily-word-line" style="font-size:1.05rem;font-style:italic;color:var(--text-mid);line-height:1.7;max-width:480px;"></div>
+    <div class="intention-label" style="display:flex; justify-content:space-between; align-items:center;">
+      <span>Your Daily Anchor &nbsp;·&nbsp; <span id="today-date"></span></span>
+      <span style="display:flex; gap:12px;">
+        <button class="icon-btn" onclick="shuffleDaily()" title="Shuffle">⟳</button>
+        <button class="icon-btn pin-btn" id="pin-word-btn" onclick="pinDaily()" title="Pin this phrase">📌</button>
+        <button class="icon-btn" onclick="copyDaily()" title="Copy to clipboard">📋</button>
+      </span>
+    </div>
+    <div id="daily-word" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,5.5rem);line-height:1;color:var(--gold);margin:16px 0 12px;letter-spacing:0.04em; transition: opacity 0.3s;"></div>
+    <div id="daily-word-line" style="font-size:1.05rem;font-style:italic;color:var(--text-mid);line-height:1.7;max-width:480px; transition: opacity 0.3s;"></div>
   </div>
 
-  <!-- CLOSING -->
-  <div class="closing section">
-    <h2>You already have everything it takes<br>to become <em>everything you imagined.</em></h2>
-    <p>The best version of you is not a distant stranger. It is simply you, compounded. Same heart. Same mind. More reps. More patience. More mornings where you chose to show up instead of give up.</p>
-    <p>Close this. Go build it. Come back when you forget -- and you will forget, and that is okay. This will be here.</p>
+  <!-- EMERGENCY PROTOCOL -->
+  <div class="break-glass section" id="emergency-section">
+    <div class="bg-label">EMERGENCY PROTOCOL</div>
+    <div class="bg-subtitle">If you are at your lowest, read this.</div>
+    <div class="bg-lines">
+      <div>
+        <span class="bg-line-num">01</span>
+        <div class="bg-line-text">You are still here. After everything that has happened, after every silence, every setback, every night that felt too long — <em>you are still here.</em> That is not nothing. That is everything.</div>
+      </div>
+      <div>
+        <span class="bg-line-num">02</span>
+        <div class="bg-line-text">You do not need to fix it all tonight. You do not need to be strong right now. You just need to <em>survive this hour</em> and let the next one come. One breath. One minute.</div>
+      </div>
+      <div>
+        <span class="bg-line-num">03</span>
+        <div class="bg-line-text">The person you are becoming has not abandoned you. They are waiting — patiently, on the other side of this exact moment. <em>Do not quit the night before it changes.</em></div>
+      </div>
+    </div>
+    <div class="po-dismiss" style="margin-top: 80px; opacity:1;"><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:var(--text-dim); text-decoration:none;">RETURN TO TOP</a></div>
   </div>
 
 </main>
@@ -768,6 +1122,34 @@ nav {
 <footer class="footer">
   Your Manifesto &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Written for the one who is ready
 </footer>
+
+
+<div class="mobile-action-bar">
+  <button class="mob-action" onclick="window.scrollTo(0,0)">Top</button>
+  <button class="mob-action" onclick="document.getElementById('phrase-fab').click()">Phrase</button>
+  <a href="#emergency-section" class="mob-action">Hard Day</a>
+</div>
+
+<!-- GIVE ME A PHRASE -->
+
+<button class="phrase-fab" id="phrase-fab">Need Motivation?</button>
+<div class="phrase-overlay" id="phrase-overlay">
+  <div class="po-context" id="po-context">WHAT DO YOU NEED?</div>
+  
+  <div class="po-menu" id="po-menu">
+    <button class="cat-btn" onclick="showCategory('Strength')">Strength</button>
+    <button class="cat-btn" onclick="showCategory('Clarity')">Clarity</button>
+    <button class="cat-btn" onclick="showCategory('Perspective')">Perspective</button>
+    <button class="cat-btn" onclick="showCategory('Hard Days')">Hard Days</button>
+  </div>
+
+  <div class="po-text" id="po-text" style="display:none; margin-top:20px;"></div>
+  <div style="display:none; margin-top:24px; gap:20px;" id="po-actions">
+    <button class="icon-btn pin-btn" id="po-pin" title="Pin this">📌 Pin</button>
+    <button class="icon-btn" id="po-copy" title="Copy">📋 Copy</button>
+  </div>
+  <div class="po-dismiss" id="po-dismiss">Click background to close</div>
+</div>
 
 <script>
 // Progress bar
@@ -803,44 +1185,276 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.section').forEach(s => observer.observe(s));
 
 // Daily word
+
 const WORDS = [
-  { word: 'PERSIST', line: 'The ones who make it are not always the most gifted. They are the ones who do not stop.' },
-  { word: 'BUILD', line: 'Every day you show up is a brick. You cannot see the wall yet. Keep laying.' },
-  { word: 'TRUST', line: 'You built the plan when your mind was clear. Trust it when your emotions are loud.' },
-  { word: 'MOVE', line: 'One step. Not the whole staircase. Just one step today and it counts.' },
-  { word: 'FOCUS', line: 'The world will fill your time with noise if you let it. Guard what matters fiercely.' },
-  { word: 'COMPOUND', line: 'Nothing looks like progress in the middle. Everything looks like it at the end.' },
-  { word: 'HOLD', line: 'Staying steady when everything pulls at you is its own form of strength.' },
-  { word: 'RETURN', line: 'You came back. That is enough. Starting again is not failure. It is the practice.' },
-  { word: 'RISE', line: 'The season is heavy. The chapter is not over. You have not yet shown what you are made of.' },
-  { word: 'EARN', line: 'Not applause. Not recognition. Earn the right to look back and say: I did not quit.' },
-  { word: 'ANCHOR', line: 'Know what you stand for. When everything shifts, that is the thing that does not move.' },
-  { word: 'ENDURE', line: 'Endurance is not suffering quietly. It is choosing, every morning, to try again.' },
-  { word: 'SHARP', line: 'Your edge is not given. It is made -- in the hours no one sees, the reps no one counts.' },
-  { word: 'ADVANCE', line: 'You do not need momentum to start. You need a start to build momentum.' },
-  { word: 'COMMIT', line: 'Half-effort produces half-results. Go all in on the thing that matters most today.' },
-  { word: 'RECOVER', line: 'How you return from hard days is the measure of who you are becoming.' },
-  { word: 'CLAIM', line: 'The life you want is not waiting for permission. Go and take it with both hands.' },
-  { word: 'STEADY', line: 'Speed is overrated. Consistency is everything. Show up again. And again.' },
-  { word: 'EXPAND', line: 'You are not the same person who started this. Keep growing past what was comfortable.' },
-  { word: 'NOW', line: 'Not when conditions are perfect. Not when you feel ready. Now. Always now.' },
-  { word: 'LEAD', line: 'Leadership begins the moment you take responsibility for your own direction.' },
-  { word: 'ADAPT', line: 'The ones who thrive are not the most prepared. They are the most adaptable.' },
-  { word: 'PATIENT', line: 'Great things compound slowly. Trust the timeline even when you cannot see it.' },
-  { word: 'CLEAR', line: 'Clarity is the most underrated tool. Know what you want and let everything else fall away.' },
-  { word: 'FORWARD', line: 'Backward is not an option. Sideways is not a plan. Forward -- always forward.' },
-  { word: 'ENOUGH', line: 'You are enough to begin. The rest is built along the way.' },
-  { word: 'EXECUTE', line: 'Vision without execution is just imagination. Today is for doing, not planning.' },
-  { word: 'LAUNCH', line: 'The perfect moment does not exist. The moment you act in is always the right one.' },
+  { word: 'PERSIST', category: 'Strength', line: 'The ones who make it are not always the most gifted. They are the ones who do not stop.' },
+  { word: 'BUILD', category: 'Strength', line: 'Every day you show up is a brick. You cannot see the wall yet. Keep laying.' },
+  { word: 'TRUST', category: 'Clarity', line: 'You built the plan when your mind was clear. Trust it when your emotions are loud.' },
+  { word: 'MOVE', category: 'Strength', line: 'One step. Not the whole staircase. Just one step today and it counts.' },
+  { word: 'FOCUS', category: 'Clarity', line: 'The world will fill your time with noise if you let it. Guard what matters fiercely.' },
+  { word: 'COMPOUND', category: 'Perspective', line: 'Nothing looks like progress in the middle. Everything looks like it at the end.' },
+  { word: 'HOLD', category: 'Hard Days', line: 'Staying steady when everything pulls at you is its own form of strength.' },
+  { word: 'RETURN', category: 'Hard Days', line: 'You came back. That is enough. Starting again is not failure. It is the practice.' },
+  { word: 'RISE', category: 'Strength', line: 'The season is heavy. The chapter is not over. You have not yet shown what you are made of.' },
+  { word: 'EARN', category: 'Strength', line: 'Not applause. Not recognition. Earn the right to look back and say: I did not quit.' },
+  { word: 'ANCHOR', category: 'Clarity', line: 'Know what you stand for. When everything shifts, that is the thing that does not move.' },
+  { word: 'ENDURE', category: 'Hard Days', line: 'Endurance is not suffering quietly. It is choosing, every morning, to try again.' },
+  { word: 'SHARP', category: 'Discipline', line: 'Your edge is not given. It is made -- in the hours no one sees, the reps no one counts.' },
+  { word: 'ADVANCE', category: 'Strength', line: 'You do not need momentum to start. You need a start to build momentum.' },
+  { word: 'COMMIT', category: 'Strength', line: 'Half-effort produces half-results. Go all in on the thing that matters most today.' },
+  { word: 'RECOVER', category: 'Hard Days', line: 'How you return from hard days is the measure of who you are becoming.' },
+  { word: 'CLAIM', category: 'Perspective', line: 'The life you want is not waiting for permission. Go and take it with both hands.' },
+  { word: 'STEADY', category: 'Clarity', line: 'Speed is overrated. Consistency is everything. Show up again. And again.' },
+  { word: 'EXPAND', category: 'Perspective', line: 'You are not the same person who started this. Keep growing past what was comfortable.' },
+  { word: 'NOW', category: 'Discipline', line: 'Not when conditions are perfect. Not when you feel ready. Now. Always now.' },
+  { word: 'LEAD', category: 'Clarity', line: 'Leadership begins the moment you take responsibility for your own direction.' },
+  { word: 'ADAPT', category: 'Perspective', line: 'The ones who thrive are not the most prepared. They are the most adaptable.' },
+  { word: 'PATIENT', category: 'Perspective', line: 'Great things compound slowly. Trust the timeline even when you cannot see it.' },
+  { word: 'CLEAR', category: 'Clarity', line: 'Clarity is the most underrated tool. Know what you want and let everything else fall away.' },
+  { word: 'FORWARD', category: 'Strength', line: 'Backward is not an option. Sideways is not a plan. Forward -- always forward.' },
+  { word: 'ENOUGH', category: 'Hard Days', line: 'You are enough to begin. The rest is built along the way.' },
+  { word: 'EXECUTE', category: 'Discipline', line: 'Vision without execution is just imagination. Today is for doing, not planning.' },
+  { word: 'LAUNCH', category: 'Strength', line: 'The perfect moment does not exist. The moment you act in is always the right one.' }
 ];
+
+let activeDaily = null;
+let activePo = null;
+
+  // 9. Keyboard Esc
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') {
+      const overlay = document.getElementById('phrase-overlay');
+      if(overlay) overlay.classList.remove('open');
+    }
+  });
+
+
+function renderDaily(entry) {
+  activeDaily = entry;
+  document.getElementById('daily-word').style.opacity = 0;
+  document.getElementById('daily-word-line').style.opacity = 0;
+  
+  setTimeout(() => {
+    document.getElementById('daily-word').textContent = entry.word;
+    document.getElementById('daily-word-line').textContent = entry.line;
+    if(localStorage.getItem('pinned-word') === entry.word) {
+      document.getElementById('daily-word').parentElement.classList.add('pinned');
+    } else {
+      document.getElementById('daily-word').parentElement.classList.remove('pinned');
+    }
+    
+    document.getElementById('daily-word').style.opacity = 1;
+    document.getElementById('daily-word-line').style.opacity = 1;
+  }, 300);
+}
+
+function shuffleDaily() {
+  const entry = WORDS[Math.floor(Math.random() * WORDS.length)];
+  renderDaily(entry);
+}
+
+function pinDaily() {
+  if(!activeDaily) return;
+  const isPinned = localStorage.getItem('pinned-word') === activeDaily.word;
+  if(isPinned) {
+    localStorage.removeItem('pinned-word');
+  } else {
+    localStorage.setItem('pinned-word', activeDaily.word);
+  }
+  renderDaily(activeDaily); // re-render to update pin state
+}
+
+function copyDaily() {
+  if(!activeDaily) return;
+  navigator.clipboard.writeText(`${activeDaily.word}: ${activeDaily.line}`).then(() => {
+    alert("Copied to clipboard!");
+  });
+}
+
+function toggleEssentials() {
+  document.body.classList.toggle('essentials-only');
+  const btn = document.getElementById('essentials-btn');
+  if(document.body.classList.contains('essentials-only')) {
+    btn.style.color = 'var(--gold)';
+    btn.style.borderColor = 'var(--gold)';
+    localStorage.setItem('essentials-mode', 'true');
+  } else {
+    btn.style.color = '';
+    btn.style.borderColor = '';
+    localStorage.setItem('essentials-mode', 'false');
+  }
+}
+
+// Scroll spy logic
+window.addEventListener('scroll', () => {
+  const sections = Array.from(document.querySelectorAll('.section-label'));
+  let current = '';
+  sections.forEach(s => {
+    const parent = s.closest('.section');
+    if(parent) {
+      const rect = parent.getBoundingClientRect();
+      if(rect.top <= 100) {
+        current = parent.querySelector('.section-num').innerText + '. ' + s.innerText;
+      }
+    }
+  });
+  const spy = document.getElementById('nav-spy');
+  if(spy.innerText !== current) {
+    spy.style.opacity = 0;
+    setTimeout(() => { spy.innerText = current; spy.style.opacity = 1; }, 200);
+  }
+});
+
 
 (function() {
   const today = new Date();
-  const idx = Math.floor((today.getFullYear() * 365 + today.getMonth() * 31 + today.getDate()) % WORDS.length);
-  const entry = WORDS[idx];
-  document.getElementById('daily-word').textContent = entry.word;
-  document.getElementById('daily-word-line').textContent = entry.line;
-  document.getElementById('today-date').textContent = today.toLocaleDateString('en-SG', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const isMobile = window.innerWidth < 640;
+  document.getElementById('today-date').textContent = today.toLocaleDateString('en-SG', { weekday: isMobile ? 'short' : 'long', day: 'numeric', month: 'short', year: 'numeric' });
+  
+  const pinnedAttr = localStorage.getItem('pinned-word');
+  const pinnedEntry = WORDS.find(w => w.word === pinnedAttr);
+  
+  if(pinnedEntry) {
+    renderDaily(pinnedEntry);
+  } else {
+    const idx = Math.floor((today.getFullYear() * 365 + today.getMonth() * 31 + today.getDate()) % WORDS.length);
+    renderDaily(WORDS[idx]);
+  }
+  
+  if(localStorage.getItem('essentials-mode') === 'true') {
+     toggleEssentials();
+  }
+})();
+
+// FAB Logic
+(function() {
+  const fab = document.getElementById('phrase-fab');
+  const overlay = document.getElementById('phrase-overlay');
+  const textEl = document.getElementById('po-text');
+  
+  
+  window.showCategory = function(cat) {
+    const filtered = WORDS.filter(w => w.category === cat || cat === 'All');
+    const entry = filtered[Math.floor(Math.random() * filtered.length)];
+    activePo = entry;
+    
+    document.getElementById('po-menu').style.display = 'none';
+    document.getElementById('po-context').textContent = cat.toUpperCase() + " ARSENAL";
+    
+    textEl.innerHTML = `${entry.word} <br><span style="font-size:0.5em; opacity:0.7; font-family: 'DM Mono', monospace;">${entry.line}</span>`;
+    textEl.style.display = 'block';
+    
+    document.getElementById('po-actions').style.display = 'flex';
+    document.getElementById('po-dismiss').textContent = 'Click background to close or pick another';
+    
+    setTimeout(() => {
+        textEl.style.opacity = 1;
+        textEl.style.transform = 'translateY(0)';
+    }, 50);
+  };
+  
+  if(fab && overlay) {
+    fab.addEventListener('click', () => {
+      textEl.style.display = 'none';
+      textEl.style.opacity = 0;
+      document.getElementById('po-menu').style.display = 'flex';
+      document.getElementById('po-context').textContent = "WHAT DO YOU NEED?";
+      document.getElementById('po-actions').style.display = 'none';
+      overlay.classList.add('open');
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) {
+        overlay.classList.remove('open');
+      }
+    });
+    
+    document.getElementById('po-pin').addEventListener('click', () => {
+      if(activePo) {
+        localStorage.setItem('pinned-word', activePo.word);
+        renderDaily(activePo);
+        alert("Pinned to your daily anchor!");
+      }
+    });
+    
+    document.getElementById('po-copy').addEventListener('click', () => {
+      if(activePo) {
+        navigator.clipboard.writeText(`${activePo.word}: ${activePo.line}`);
+        alert("Copied to clipboard!");
+      }
+    });
+  }
+})();
+
+// ==============================
+// TYPEWRITER ON MASTER PHRASE
+// ==============================
+(function() {
+  const target = document.getElementById('typer-target');
+  if (!target) return;
+  
+  const line1 = 'My Greatest';
+  const line2 = 'Chapter';
+  const line3 = 'Begins Now.';
+  
+  const span1 = document.createElement('span'); span1.className = 'mp-line';
+  const span2 = document.createElement('span'); span2.className = 'mp-line mp-gold';
+  const span3 = document.createElement('span'); span3.className = 'mp-line';
+  
+  target.innerHTML = '';
+  target.appendChild(span1);
+  target.appendChild(span2);
+  target.appendChild(span3);
+  
+  const cursor = document.createElement('span');
+  cursor.className = 'mp-cursor';
+  
+  let i=0, j=0, k=0;
+  const speed = 75;
+  
+  function typeLine3() {
+    if (k < line3.length) {
+      span3.innerHTML = line3.substring(0, k + 1) + '<span class="mp-cursor"></span>';
+      k++;
+      setTimeout(typeLine3, speed);
+    } else {
+      setTimeout(() => {
+        const sub = document.querySelector('.master-sub');
+        if(sub) sub.classList.add('revealed');
+      }, 500);
+    }
+  }
+  
+  function typeLine2() {
+    if (j < line2.length) {
+      span2.innerHTML = line2.substring(0, j + 1) + '<span class="mp-cursor"></span>';
+      j++;
+      setTimeout(typeLine2, speed);
+    } else {
+      span2.innerHTML = line2;
+      setTimeout(typeLine3, Math.max(speed, 200));
+    }
+  }
+  
+  function typeLine1() {
+    if (i < line1.length) {
+      span1.innerHTML = line1.substring(0, i + 1) + '<span class="mp-cursor"></span>';
+      i++;
+      setTimeout(typeLine1, speed);
+    } else {
+      span1.innerHTML = line1;
+      setTimeout(typeLine2, Math.max(speed, 200));
+    }
+  }
+  
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      typeLine1();
+      observer.disconnect();
+    }
+  }, { threshold: 0.5 });
+  
+  observer.observe(target);
 })();
 </script>
 </body>
