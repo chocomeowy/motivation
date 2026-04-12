@@ -60,30 +60,31 @@ body::before {
   opacity: 0.4;
 }
 
-/* Progress bar */
+nav {
+  position: fixed;
+  top: 0; /* Attach to top to avoid gap issues */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 12px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
 #progress-bar {
   position: fixed;
   top: 0;
   left: 0;
-  height: var(--progress-h);
+  height: 3px;
   background: linear-gradient(90deg, var(--gold), var(--gold2));
   width: 0%;
-  z-index: 999;
+  z-index: 1001;
   transition: width 0.1s linear;
-}
-
-/* Nav */
-nav {
-  position: fixed;
-  top: var(--progress-h);
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 18px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(to bottom, var(--bg) 60%, transparent);
 }
 
 .nav-brand {
@@ -710,7 +711,11 @@ nav {
 
 /* Responsive */
 @media (max-width: 640px) {
-  nav { padding: 16px 20px; }
+  nav { padding: 8px 16px; }
+  .nav-right { gap: 8px; }
+  .theme-toggle { padding: 4px 8px; font-size: 0.6rem; }
+  .nav-right a.theme-toggle { display: none !important; } /* Hide Hard Day on mobile top nav since it's in bottom bar */
+  .nav-spy { display: none; } /* Hide spy on small mobile to save horizontal space */
   .hero { padding: 100px 20px 60px; }
   .hero-glow { width: 320px; height: 320px; left: 5%; top: 20%; }
   .hero-glow-secondary { display: none; }
