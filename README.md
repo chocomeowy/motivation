@@ -5,7 +5,7 @@ A premium, minimalist personal manifesto and "pocket arsenal" designed for high-
 ## 🌟 Key Features
 
 ### 1. Dual-Mode Ergonomics
-- **Full Manifesto**: The complete narrative journey, structured around identity, abundance, and action.
+- **Full Manifesto**: The complete narrative journey, structured around identity, abundance, action, and the "Four Core Tracks" (The Output, The Citadel, The Mind, The Engine).
 - **Essentials Mode**: A one-tap toggle in the navigation that hides everything except the **Master Phrase**, your **Core Affirmations**, and the **Emergency Protocol**. Clean, zero-distraction focus when you have low mental bandwidth.
 
 ### 2. The Intention-Driven Arsenal (FAB)
